@@ -3,7 +3,7 @@
 Simulation code and numerical protocols for:
 
 **I. Denysov, *Physics from Finite Validation: The Bridge — How a Validation Network Becomes a Field*, United Field Initiative, 2026.**
-DOI: [to be assigned after Zenodo deposit]
+DOI: [https://doi.org/10.5281/zenodo.20664785]
 
 Series: [Paper 1](https://doi.org/10.5281/zenodo.20633926) · [Paper 2](https://doi.org/10.5281/zenodo.20634290) · [Paper 3](https://doi.org/10.5281/zenodo.20640511) · [Paper 4](https://doi.org/10.5281/zenodo.20657843) · this work (Paper 5).
 
