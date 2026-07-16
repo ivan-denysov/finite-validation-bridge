@@ -15,7 +15,7 @@ This work closes the programme's load-bearing open debt — that its two model r
 ```
 python >= 3.10
 numpy
-scipy         # spatial (cKDTree, ConvexHull) for the net3d_* family; Lambert-W for bridge_dde_truncation.py
+scipy         # spatial (cKDTree, ConvexHull) for the net3d_* family; Lambert-W for bridge_dde_truncation.py; sparse (eigsh, cg) for the post-v3 block
 matplotlib    # figures only
 ```
 
@@ -42,6 +42,12 @@ linear dispersion, the kink, the delay spectrum, isotropy.
 — the massless (Goldstone) vs massive (Klein–Gordon) branches, what matter is, and
 the tensor (spin-2) sector on the amorphous substrate.
 
+**Post-v3 debt-downgrade explorations (toward v4):**
+`bond_bending_fullN.py`, `delta_omega_mass_v1.py`, `lorentz_k0_v2.py`,
+`ct_equals_c_v2.py`, `maxwell_emergence_v1.py`, `unique_cone_v1.py` — the runs that
+downgrade the analytic debts named in v3 (scale, mass-formalism, IR Lorentz, the
+c_T = c / GW170817 problem). Exploratory; not part of the published v3 PDF.
+
 ## Quick start
 
 ```
@@ -50,6 +56,7 @@ python net3d_bridge3d.py         # 3D dispersion (fig_dispersion)
 python net3d_soliton_finish.py A # condensate, low density  (fig_condensate)
 python goldstone_dispersion_v1.py   # massless vs massive branch (1D)
 python bond_bending_v2.py           # tensor sector on the amorphous substrate
+python unique_cone_v1.py            # c_gamma = c_T via elasticity-gauge duality
 ```
 
 ## Script -> paper-section map
@@ -123,6 +130,17 @@ Two sectors / Goldstone protection (companion Block J, §6d) [v3]:
 | `transverse_phonon_v1.py` | transverse (spin-2) phonons on a rigid Z=18 stand-in, c_T<c_L | confirmed in-model |
 | `bond_bending_v2.py` | bond-bending (B5) rigidifies the amorphous Z̄≈5.5 substrate; floppy = Maxwell + self-stress; c_T/c_L=0.57–0.71 same substrate | confirmed in-model (reduced N) |
 
+Post-v3 debt-downgrade explorations (toward v4):
+
+| script | debt addressed | result | status |
+|---|---|---|---|
+| `bond_bending_fullN.py` | scale (J.6 used reduced N) | full N=8000 via sparse CG: Maxwell floppy 1961; bond-bending opens G>0, c_T=0.74 | debt closed in-model |
+| `delta_omega_mass_v1.py` | the two mass-formalisms (m vs Δω) | kink energy E=8m; gravity couples to energy ⇒ Δω_eff = 8·s·m | partial (coefficient s remains) |
+| `lorentz_k0_v2.py` | IR Lorentz (vacuum dispersion) | ω²=c²(0)k²+βk⁴, R²=0.998; c²(0)=0.283±0.012 — linear dispersion, definite k→0 speed | debt closed in-model |
+| `ct_equals_c_v2.py` | transverse degeneracy (GW170817) | anisotropy of c_T falls as 1/√N (1.23→0.61%) — degeneracy exact by rotational symmetry | debt closed in-model |
+| `maxwell_emergence_v1.py` | "is light transverse?" (the GW170817 hinge) | link field ⇒ 2 transverse gapless polarisations, longitudinal is pure-gauge zero mode, U(1) invariance protects masslessness | mechanism shown |
+| `unique_cone_v1.py` | the unique light cone c_γ=c_T=c_GW | independent photon: different cone; **dual photon (stiffness := shear modulus): c_γ=c_T exactly at all k** (elasticity-gauge duality) | closed conditional on one premise |
+
 Figures:
 
 | script | output |
@@ -137,6 +155,15 @@ Figures:
 - condensate: straightness plateau 0.294–0.295 over t = 10000–20000; blocked ≈ 0.8; open-arc control self-sustains
 - Goldstone: massless branch gapless (1D & 3D), exact uniform-mode zero; on-site term reopens gap √g
 - tensor sector: amorphous Z̄=5.59 floppy (296 modes = Maxwell 140 + 156 self-stress); bond-bending k⊥ restores shear, c_T/c_L = 0.57–0.71 (reduced N=700)
+
+### Post-v3 (toward v4)
+
+- scale: N=8000 sparse CG — Maxwell floppy count 1961; bond-bending opens G=0.54, c_T=0.74
+- mass-formalisms: kink rest energy E=8m (sine-Gordon), gravitational source Δω_eff = 8·s·m
+- IR Lorentz: ω²=c²(0)k²+βk⁴, R²=0.998, c²(0)=0.283±0.012 (definite k→0 wave speed)
+- transverse degeneracy: c_T anisotropy 1.23→1.05→0.61% for N=1000→2500→5000 (~1/√N ⇒ exact in continuum)
+- emergent photon: 2 transverse gapless polarisations, longitudinal pure-gauge, U(1) gauge invariance (energy invariant to machine precision under A→A+∇χ)
+- unique cone: dual photon (coupling = shear modulus) gives c_γ/c_T = 1.00000 at all k; independent photon gives 1.83
 
 ## License
 
